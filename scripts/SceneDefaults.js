@@ -5,12 +5,31 @@ Hooks.on('init', () => {
 
 })
 
-Hooks.on('ready', async ()=>{
-    const defaultData = await SocketInterface.dispatch("modifyDocument", {
-        type: "Scene",
-        action: "create",
-        data: [{folder: undefined, name: "ceapa", type: "base"}],
-        options: {temporary: true, renderSheet: false}
-    });
-    await setSetting(defaultData.result[0],'defaultSettings');
+const saveSceneData = (entityData) => async () => {
+    delete entityData._id;
+    delete entityData.name;
+    await setSetting(entityData, 'defaultSettings');
+}
+
+const createNewButton = (sceneSave) => {
+    let button = $('<button>Save as default</button>');
+    button.on('click', sceneSave)
+    return button;
+}
+
+const remakeButtonsStructure = (sceneSave) => {
+    let newButtonStructure = $('<div class="form-group"></div>');
+    newButtonStructure.append($('button[name ="submit"]'), createNewButton(sceneSave));
+
+    return newButtonStructure;
+}
+
+const getButtonLocation = ($form) => $form.children('section').children()
+
+Hooks.on('renderSceneConfig', async (html, $form, formData) => {
+    const sceneSave = saveSceneData(formData.entity);
+    const buttonStructure = remakeButtonsStructure(sceneSave);
+
+    getButtonLocation($form).append(buttonStructure);
+    console.log(html, $form);
 })
