@@ -12,7 +12,10 @@ const getSceneData = (entityData) => {
     return newEntityData;
 }
 
-const saveSceneData = (entityData) => async () => await setSetting(getSceneData (entityData), 'defaultSettings');
+const saveSceneData = (entityData) => async () => {
+    await setSetting(getSceneData (entityData), 'defaultSettings');
+    ui.notifications.info('Default scene configurations saved');
+}
 
 const createNewButton = (sceneSave) => {
     let button = $('<button  type="button" name="submit2">Save as default</button>');
