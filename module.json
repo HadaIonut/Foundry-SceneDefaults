@@ -1,8 +1,8 @@
 {
   "name": "sceneDefaults",
   "title": "Scene Defaults",
-  "description": "",
-  "version": "0.0.1",
+  "description": "The name says it, this module adds the option to make a scene configuration default.",
+  "version": "1.0.0",
   "minimumCoreVersion": "0.7.0",
   "compatibleCoreVersion": "0.7.5",
   "author": "HadaIoan",
@@ -11,7 +11,7 @@
   "styles": [
     "/styles/module.css"
   ],
-  "url": "",
+  "url": "https://github.com/HadaIonut/Foundry-SceneDefaults",
   "manifest": "",
   "download": ""
 }

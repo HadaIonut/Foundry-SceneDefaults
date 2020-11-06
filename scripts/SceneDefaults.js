@@ -36,7 +36,7 @@ const updateSceneData = (sceneData) => {
     Object.keys(savedSettings).forEach((savedDataKey)=> sceneData[savedDataKey] = savedSettings[savedDataKey])
 }
 
-Hooks.on('renderSceneConfig', async (html, $form, formData) => {
+Hooks.on('renderSceneConfig', async (html, $form) => {
     console.log()
     const sceneSave = saveSceneData(html);
     const buttonStructure = remakeButtonsStructure(sceneSave);
