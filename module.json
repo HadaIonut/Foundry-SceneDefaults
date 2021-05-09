@@ -1,17 +1,19 @@
 {
-  "name": "sceneDefaults",
-  "title": "Scene Defaults",
-  "description": "The name says it, this module adds the option to make a scene configuration default.",
-  "version": "1.0.0",
-  "minimumCoreVersion": "0.7.0",
-  "compatibleCoreVersion": "0.7.5",
-  "author": "HadaIoan",
-  "dependencies": [],
-  "esmodules": ["/scripts/SceneDefaults.js"],
-  "styles": [
-    "/styles/module.css"
-  ],
-  "url": "https://github.com/HadaIonut/Foundry-SceneDefaults",
-  "manifest": "",
-  "download": ""
+    "name": "sceneDefaults",
+    "title": "Scene Defaults",
+    "description": "The name says it, this module adds the option to make a scene configuration default.",
+    "version": "1.0.1",
+    "minimumCoreVersion": "0.8.2",
+    "compatibleCoreVersion": "0.8.2",
+    "author": "HadaIoan",
+    "dependencies": [],
+    "esmodules": [
+        "/scripts/SceneDefaults.js"
+    ],
+    "styles": [
+        "/styles/module.css"
+    ],
+    "url": "https://github.com/HadaIonut/Foundry-SceneDefaults",
+    "manifest": "https://github.com/HadaIonut/Foundry-SceneDefaults/releases/latest/download/module.json",
+    "download": "https://github.com/HadaIonut/Foundry-SceneDefaults/releases/download/1.0.1/module.zip"
 }

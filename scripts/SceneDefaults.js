@@ -13,7 +13,7 @@ const getSceneData = (entityData) => {
 }
 
 const saveSceneData = (entityData) => async () => {
-    await setSetting(getSceneData (entityData), 'defaultSettings');
+    await setSetting(getSceneData(entityData), 'defaultSettings');
     ui.notifications.info('Default scene configurations saved');
 }
 
@@ -35,8 +35,11 @@ const getButtonLocation = ($form) => $form.children('section').children();
 const isADefaultSaved = () => !!getSetting('defaultSettings');
 
 const updateSceneData = (sceneData) => {
-    const savedSettings = getSetting('defaultSettings');
-    Object.keys(savedSettings).forEach((savedDataKey)=> sceneData[savedDataKey] = savedSettings[savedDataKey])
+    const savedData = {
+        ...JSON.parse(JSON.stringify(sceneData.data)),
+        ...getSetting('defaultSettings')
+    };
+    sceneData.update(savedData);
 }
 
 Hooks.on('renderSceneConfig', async (html, $form) => {
@@ -47,6 +50,6 @@ Hooks.on('renderSceneConfig', async (html, $form) => {
     getButtonLocation($form).append(buttonStructure);
 })
 
-Hooks.on('preCreateScene', (scenedata) => {
+Hooks.on('createScene', (scenedata) => {
     if (isADefaultSaved()) updateSceneData(scenedata);
 })
