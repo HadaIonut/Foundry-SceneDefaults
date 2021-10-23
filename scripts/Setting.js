@@ -10,7 +10,17 @@ const SETTINGS = [
             restricted: true,
             default: {},
         }
-    }
+    },
+    {
+        key: 'saveSlots',
+        data: {
+            type: Object,
+            scope: "world",
+            config: false,
+            restricted: true,
+            default: {},
+        }
+    },
 ]
 
 const registerSetting = (setting) => game?.settings?.register(moduleName, setting.key, setting.data);

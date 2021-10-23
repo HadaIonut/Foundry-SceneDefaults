@@ -1,0 +1,19 @@
+.save-slot-display {
+    height: 144px;
+    width: 300px;
+    resize: none;
+    overflow: scroll;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.flex-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}

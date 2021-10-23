@@ -1,0 +1,26 @@
+<form>
+  <div style="width: 500px; height: 300px" class="flex-column">
+    <div class="form-group">
+      <label>Your Saved Configs:</label>
+      <div class="form-fields">
+        <select name="saves" id="saves" style="margin: 5px">
+          <option value="default">Select a saved config</option>
+          {{#each saveSlots}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+        <button type="button" id="deleteSlot"><i class="fas fa-trash fa-fw" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <div class="flex-display">
+      <span style="flex-grow: 1"> Data in saved configs </span>
+      <pre class="save-slot-display" id="saveSlotData"></pre>
+    </div>
+
+    <div class="form-group">
+      <button id="apply">Apply data</button>
+      <button id="setDefault">Set default</button>
+    </div>
+  </div>
+</form>
