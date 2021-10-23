@@ -2,10 +2,10 @@
   <div style="width: 500px; height: 100px" class="flex-column">
 
     <div class="form-group">
-      <label>Your Saved Configs:</label>
+      <label>Your Templates:</label>
       <div class="form-fields">
         <select name="saves" id="saves">
-          <option value="default">Select a saved configs to override</option>
+          <option value="default">Select a template to override</option>
           {{#each saveSlots}}
             <option value="{{this}}">{{this}}</option>
           {{/each}}
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-group">
-      <label>Configs Name: </label>
+      <label>Template Name: </label>
       <div class="form-fields">
         <input name="saveSlotName" id="saveSlotName" type="text"/>
         <button type="submit">Save</button>

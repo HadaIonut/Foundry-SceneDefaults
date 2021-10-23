@@ -10,7 +10,7 @@ export default class SaveSlotApp extends FormApplication {
             minimizable: false,
             submitOnClose: false,
             closeOnSubmit: false,
-            title: "Saved Configs",
+            title: "Save Template",
         }
     }
 
@@ -22,16 +22,20 @@ export default class SaveSlotApp extends FormApplication {
     getData(options) {
         return {
             saveSlots: Object.keys(getSetting('saveSlots')),
-            currentData: JSON.stringify(this.currentData, (key, value) => (value || ''), 4).replace(/"([^"]+)":/g, '$1:')
+            currentData: JSON.stringify(
+                this.currentData,
+                (key, value) => (value || ''),
+                4
+            ).replace(/"([^"]+)":/g, '$1:')
         }
     }
 
     async _updateObject(event, formData) {
         if (formData.saveSlotName === '') {
-            ui.notifications.error('Save config name cannot be empty')
+            ui.notifications.error('Template name cannot be empty')
             return;
         } else if (formData.saveSlotName === 'default') {
-            ui.notifications.error('Save config name cannot be "default"')
+            ui.notifications.error('Template name cannot be "default"')
             return;
         }
 

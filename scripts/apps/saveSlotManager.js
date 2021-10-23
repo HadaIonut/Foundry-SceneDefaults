@@ -10,7 +10,7 @@ export default class SaveSlotAppManager extends FormApplication {
             minimizable: false,
             submitOnClose: false,
             closeOnSubmit: true,
-            title: "Saved Configs Manager",
+            title: "Template Manager",
         }
     }
 
@@ -36,16 +36,21 @@ export default class SaveSlotAppManager extends FormApplication {
 
     activateListeners(html) {
         html.find('#saves').on('change', (...args) => {
-            html.find('#saveSlotData')[0].innerHTML = JSON.stringify(getSetting('saveSlots')[$(args[0].target).val()], (key, value) => (value || ''), 4).replace(/"([^"]+)":/g, '$1:')
+            html.find('#saveSlotData')[0].innerHTML = JSON.stringify(
+                getSetting('saveSlots')[$(args[0].target).val()],
+                (key, value) => (value || ''),
+                4
+            ).replace(/"([^"]+)":/g, '$1:')
         })
-        html.find('#deleteSlot').on('click', async (...args) => {
+
+        html.find('#deleteSlot').on('click', async () => {
             const selectedElement = html.find('#saves :selected');
             if (selectedElement.val() === 'default') return;
 
             const {[selectedElement.text()]: removed, ...newSetting} = getSetting('saveSlots');
             selectedElement.remove();
-            html.find('#saveSlotData')[0].innerHTML = ''
-            await setSetting(newSetting, 'saveSlots')
+            html.find('#saveSlotData')[0].innerHTML = '';
+            await setSetting(newSetting, 'saveSlots');
         })
     }
 }

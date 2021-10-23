@@ -24,7 +24,7 @@ const createNewButton = (sceneSave, html) => {
     let saveAsDefaultButton = $('<button type="button" name="submit2">Save as default</button>');
     saveAsDefaultButton.on('click', sceneSave)
 
-    let saveToSaveSlot = $('<button type="button" name="submit3">Save Config</button>');
+    let saveToSaveSlot = $('<button type="button" name="submit3">Save Template</button>');
     saveToSaveSlot.on('click', () => {
         new SaveSlotApp(getSceneData(html)).render(true)
     });
@@ -52,7 +52,7 @@ const updateSceneData = (sceneData) => {
 }
 
 const createSaveSlotsManager = (html, $form) => {
-    const saveSlotsManagerButton = $(`<a class="header-button">Saved Configs Manager</a>`);
+    const saveSlotsManagerButton = $(`<a class="header-button">Manage Templates</a>`);
     saveSlotsManagerButton.on('click', () => {
         new SaveSlotAppManager(html).render(true)
     })
