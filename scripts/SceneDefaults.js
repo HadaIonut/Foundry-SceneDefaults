@@ -3,7 +3,6 @@ import SaveSlotApp from "./apps/saveSlotApp.js";
 import SaveSlotAppManager from "./apps/saveSlotManager.js";
 
 Hooks.on('init', () => registerSettings());
-let currentSceneData;
 
 const getSceneData = (entityData) => {
     const newEntityData = JSON.parse(JSON.stringify(entityData._getSubmitData()));
@@ -52,15 +51,12 @@ const updateSceneData = (sceneData) => {
 }
 
 const createSaveSlotsManager = (html, $form) => {
-    const saveSlotsManagerButton = $(`<a class="header-button">Manage Templates</a>`);
-    saveSlotsManagerButton.on('click', () => {
-        new SaveSlotAppManager(html).render(true)
-    })
+    const saveSlotsManagerButton = $(`<a>Manage Templates</a>`);
+    saveSlotsManagerButton.on('click', () => new SaveSlotAppManager(html).render(true))
     $form.find('.header-button.close').before(saveSlotsManagerButton)
 }
 
 Hooks.on('renderSceneConfig', async (html, $form) => {
-    currentSceneData = getSceneData(html)
     const sceneSave = saveSceneData(html);
     const buttonStructure = remakeButtonsStructure(sceneSave, html);
 
